@@ -1,6 +1,5 @@
-# ec2.sh
-amazon wrapper to launch app
-usage
+# ec2.sh requires aws-cli and jq
+#amazon wrapper to launch app
 ./ec2.sh hello_world 1 t1.micro
 
 
