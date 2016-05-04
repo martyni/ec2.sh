@@ -1,0 +1,15 @@
+#!/bin/bash
+apt-get update && apt-get install curl wget unzip -y;
+curl -L https://bootstrap.saltstack.com -o bootstrap_salt.sh;
+bash bootstrap_salt.sh;
+wget https://github.com/martyni/salt/archive/master.zip;
+unzip master.zip -d /srv;
+cat <<EOM >/etc/salt/minion
+file_client: local
+file_roots:
+  base:
+    - /srv/salt-master/salt
+EOM
+;
+service salt-minion restart;
+salt-call state.highstate;
